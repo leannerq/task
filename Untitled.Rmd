@@ -48,10 +48,15 @@ classSurvey<-gs_read(gsSurvey,ws=1)
 
 (classSurvey$本學期學分數 > 20)
 
-(classSurvey$性別 == "男" | 
+(classSurvey$性別 == "男" & 
     classSurvey$本學期學分數 > 20)
 ```
 ```{r}
+(classSurvey$性別 == "男" |
+classSurvey$本學期學分數 > 26)
+
+classSurvey[(classSurvey$性別 == "男" &
+classSurvey$本學期學分數 > 26),3]
 
 ```
 
