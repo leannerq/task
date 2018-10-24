@@ -13,6 +13,8 @@ StuDF[1,2 ]
 StuDF[1,]
 StuDF[c(1,4),]
 StuDF[c(1,4),c(2,3)]
+(StuDF$score >= 80)
+(StuDF$name == "小新")
 ```
 
 ```{r}
@@ -42,6 +44,15 @@ StuDF[-c(1,4),]
 library(googlesheets)
 gsSurvey<-gs_key("1mC9bnxj11NCNoOCw0Vmn4nxERbHtLjeGo9v9C9b2GDE")
 classSurvey<-gs_read(gsSurvey,ws=1)
+(classSurvey$性別 == "男")
+
+(classSurvey$本學期學分數 > 20)
+
+(classSurvey$性別 == "男" | 
+    classSurvey$本學期學分數 > 20)
+```
+```{r}
+
 ```
 
 
