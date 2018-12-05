@@ -17,4 +17,32 @@ mutate(libraryData,
   ) -> libraryData
 ```
 
+```{r}
+minMax <- function(x){
+max(libraryData$讀者借閱冊數) -> maxNumber
+min(libraryData$讀者借閱冊數) -> minNumber
+paste0("最大值： ",maxNumber, " 最小值： ",minNumber)}
+
+minMax(libraryData$書籍出版日期)
+```
+
+```{r}
+minMax2 <- function(x){
+max(libraryData$讀者借閱冊數) -> maxNumber
+min(libraryData$讀者借閱冊數) -> minNumber
+paste0("最大值： ",maxNumber, " 最小值： ",minNumber) -> result
+return(result)}
+```
+
+```{r}
+libraryData$學院 == "人文學院" -> logIndex
+libraryData[logIndex, ] -> subsample
+
+libraryData$學院 == "社會科學院" -> logIndex
+libraryData[logIndex, ] -> subsample2
+```
+
+
+
+
 

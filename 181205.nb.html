@@ -182,6 +182,22 @@ $(document).ready(function () {
 <pre class="r"><code>library(readr); library(dplyr); library(stringr); library(lubridate)
 libraryData &lt;- read_csv(&quot;https://raw.githubusercontent.com/tpemartin/github-data/master/library100_102.csv&quot;)</code></pre>
 <!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiUGFyc2VkIHdpdGggY29sdW1uIHNwZWNpZmljYXRpb246XG5jb2xzKFxuICDlrbjomZ8gPSBjb2xfY2hhcmFjdGVyKCksXG4gIOabuOexjemhnuWIpSA9IGNvbF9jaGFyYWN0ZXIoKSxcbiAg5pu457GN5ZCN56ixID0gY29sX2NoYXJhY3RlcigpLFxuICDoroDogIXlgJ/plrHlhormlbggPSBjb2xfaW50ZWdlcigpLFxuICDmm7jnsY3lh7rniYjml6XmnJ8gPSBjb2xfaW50ZWdlcigpLFxuICDmm7jnsY3ppKjol4/lnLAgPSBjb2xfY2hhcmFjdGVyKCksXG4gIOabuOexjeS4iuaetuW5tOaciCA9IGNvbF9kYXRlKGZvcm1hdCA9IFwiXCIpLFxuICDlhaXlrbjlubQgPSBjb2xfaW50ZWdlcigpLFxuICDoroDogIXlubTntJogPSBjb2xfaW50ZWdlcigpLFxuICDlrbjpmaIgPSBjb2xfY2hhcmFjdGVyKCksXG4gIOWAn+mWseaZgumWkyA9IGNvbF9jaGFyYWN0ZXIoKVxuKVxuIn0= -->
+<pre><code>Parsed with column specification:
+cols(
+  學號 = col_character(),
+  書籍類別 = col_character(),
+  書籍名稱 = col_character(),
+  讀者借閱冊數 = col_integer(),
+  書籍出版日期 = col_integer(),
+  書籍館藏地 = col_character(),
+  書籍上架年月 = col_date(format = &quot;&quot;),
+  入學年 = col_integer(),
+  讀者年級 = col_integer(),
+  學院 = col_character(),
+  借閱時間 = col_character()
+)</code></pre>
+<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
@@ -197,8 +213,50 @@ libraryData &lt;- read_csv(&quot;https://raw.githubusercontent.com/tpemartin/git
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubWluTWF4IDwtIGZ1bmN0aW9uKHgpe1xubWF4KGxpYnJhcnlEYXRhJOiugOiAheWAn+mWseWGiuaVuCkgLT4gbWF4TnVtYmVyXG5taW4obGlicmFyeURhdGEk6K6A6ICF5YCf6Zax5YaK5pW4KSAtPiBtaW5OdW1iZXJcbnBhc3RlMChcIuacgOWkp+WAvO+8miBcIixtYXhOdW1iZXIsIFwiIOacgOWwj+WAvO+8miBcIixtaW5OdW1iZXIpfVxubWluTWF4KGxpYnJhcnlEYXRhJOabuOexjeWHuueJiOaXpeacnylcbmBgYCJ9 -->
+<pre class="r"><code>minMax &lt;- function(x){
+max(libraryData$讀者借閱冊數) -&gt; maxNumber
+min(libraryData$讀者借閱冊數) -&gt; minNumber
+paste0(&quot;最大值： &quot;,maxNumber, &quot; 最小值： &quot;,minNumber)}
+minMax(libraryData$書籍出版日期)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIFwi5pyA5aSn5YC877yaIDYxMyDmnIDlsI/lgLzvvJogMVwiXG4ifQ== -->
+<pre><code>[1] &quot;最大值： 613 最小值： 1&quot;</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZnVuY3Rpb24oeCl7XG5tYXgobGlicmFyeURhdGEk6K6A6ICF5YCf6Zax5YaK5pW4KSAtPiBtYXhOdW1iZXJcbm1pbihsaWJyYXJ5RGF0YSToroDogIXlgJ/plrHlhormlbgpIC0+IG1pbk51bWJlclxucGFzdGUwKFwi5pyA5aSn5YC877yaIFwiLG1heE51bWJlciwgXCIg5pyA5bCP5YC877yaIFwiLG1pbk51bWJlcikgLT4gcmVzdWx0XG5yZXR1cm4ocmVzdWx0KX0gLT4gbWluTWF4MlxuYGBgIn0= -->
+<pre class="r"><code>function(x){
+max(libraryData$讀者借閱冊數) -&gt; maxNumber
+min(libraryData$讀者借閱冊數) -&gt; minNumber
+paste0(&quot;最大值： &quot;,maxNumber, &quot; 最小值： &quot;,minNumber) -&gt; result
+return(result)} -&gt; minMax2</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiZnVuY3Rpb24oeCl7XG5tYXgobGlicmFyeURhdGEk6K6A6ICF5YCf6Zax5YaK5pW4KSAtPiBtYXhOdW1iZXJcbm1pbihsaWJyYXJ5RGF0YSToroDogIXlgJ/plrHlhormlbgpIC0+IG1pbk51bWJlclxucGFzdGUwKFwi5pyA5aSn5YC877yaIFwiLG1heE51bWJlciwgXCIg5pyA5bCP5YC877yaIFwiLG1pbk51bWJlcikgLT4gcmVzdWx0XG5yZXR1cm4ocmVzdWx0KX0gLT4gbWluTWF4MlxuIn0= -->
+<pre><code>function(x){
+max(libraryData$讀者借閱冊數) -&gt; maxNumber
+min(libraryData$讀者借閱冊數) -&gt; minNumber
+paste0(&quot;最大值： &quot;,maxNumber, &quot; 最小值： &quot;,minNumber) -&gt; result
+return(result)} -&gt; minMax2</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeURhdGEk5a246ZmiID09IFwi5Lq65paH5a246ZmiXCIgLT4gbG9nSW5kZXhcbmxpYnJhcnlEYXRhW2xvZ0luZGV4LCBdIC0+IHN1YnNhbXBsZVxubGlicmFyeURhdGEk5a246ZmiID09IFwi56S+5pyD56eR5a246ZmiXCIgLT4gbG9nSW5kZXhcbmxpYnJhcnlEYXRhW2xvZ0luZGV4LCBdIC0+IHN1YnNhbXBsZTJcbmBgYCJ9 -->
+<pre class="r"><code>libraryData$學院 == &quot;人文學院&quot; -&gt; logIndex
+libraryData[logIndex, ] -&gt; subsample
+libraryData$學院 == &quot;社會科學院&quot; -&gt; logIndex
+libraryData[logIndex, ] -&gt; subsample2</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
 
-<div id="rmd-source-code">LS0tCnRpdGxlOiAiUiBOb3RlYm9vayIKb3V0cHV0OiBodG1sX25vdGVib29rCi0tLQoKYGBge3J9CmxpYnJhcnkocmVhZHIpOyBsaWJyYXJ5KGRwbHlyKTsgbGlicmFyeShzdHJpbmdyKTsgbGlicmFyeShsdWJyaWRhdGUpCmxpYnJhcnlEYXRhIDwtIHJlYWRfY3N2KCJodHRwczovL3Jhdy5naXRodWJ1c2VyY29udGVudC5jb20vdHBlbWFydGluL2dpdGh1Yi1kYXRhL21hc3Rlci9saWJyYXJ5MTAwXzEwMi5jc3YiKQpgYGAKCmBgYHtyfQptdXRhdGUobGlicmFyeURhdGEsIArlrbjpmaI9YXMuZmFjdG9yKOWtuOmZoiksCuabuOexjemkqOiXj+WcsD1hcy5mYWN0b3Io5pu457GN6aSo6JeP5ZywKSwK5pu457GN6aGe5YilPWFzLmZhY3Rvcijmm7jnsY3poZ7liKUpLArlgJ/plrHmmYLplpM9eW1kX2htcyjlgJ/plrHmmYLplpMsdHo9IkFzaWEvVGFpcGVpIikKICApIC0+IGxpYnJhcnlEYXRhCmBgYAoKCg==</div>
+<div id="rmd-source-code">LS0tCnRpdGxlOiAiUiBOb3RlYm9vayIKb3V0cHV0OiBodG1sX25vdGVib29rCi0tLQoKYGBge3J9CmxpYnJhcnkocmVhZHIpOyBsaWJyYXJ5KGRwbHlyKTsgbGlicmFyeShzdHJpbmdyKTsgbGlicmFyeShsdWJyaWRhdGUpCmxpYnJhcnlEYXRhIDwtIHJlYWRfY3N2KCJodHRwczovL3Jhdy5naXRodWJ1c2VyY29udGVudC5jb20vdHBlbWFydGluL2dpdGh1Yi1kYXRhL21hc3Rlci9saWJyYXJ5MTAwXzEwMi5jc3YiKQpgYGAKCmBgYHtyfQptdXRhdGUobGlicmFyeURhdGEsIArlrbjpmaI9YXMuZmFjdG9yKOWtuOmZoiksCuabuOexjemkqOiXj+WcsD1hcy5mYWN0b3Io5pu457GN6aSo6JeP5ZywKSwK5pu457GN6aGe5YilPWFzLmZhY3Rvcijmm7jnsY3poZ7liKUpLArlgJ/plrHmmYLplpM9eW1kX2htcyjlgJ/plrHmmYLplpMsdHo9IkFzaWEvVGFpcGVpIikKICApIC0+IGxpYnJhcnlEYXRhCmBgYAoKYGBge3J9Cm1pbk1heCA8LSBmdW5jdGlvbih4KXsKbWF4KGxpYnJhcnlEYXRhJOiugOiAheWAn+mWseWGiuaVuCkgLT4gbWF4TnVtYmVyCm1pbihsaWJyYXJ5RGF0YSToroDogIXlgJ/plrHlhormlbgpIC0+IG1pbk51bWJlcgpwYXN0ZTAoIuacgOWkp+WAvO+8miAiLG1heE51bWJlciwgIiDmnIDlsI/lgLzvvJogIixtaW5OdW1iZXIpfQoKbWluTWF4KGxpYnJhcnlEYXRhJOabuOexjeWHuueJiOaXpeacnykKYGBgCgpgYGB7cn0KbWluTWF4MiA8LSBmdW5jdGlvbih4KXsKbWF4KGxpYnJhcnlEYXRhJOiugOiAheWAn+mWseWGiuaVuCkgLT4gbWF4TnVtYmVyCm1pbihsaWJyYXJ5RGF0YSToroDogIXlgJ/plrHlhormlbgpIC0+IG1pbk51bWJlcgpwYXN0ZTAoIuacgOWkp+WAvO+8miAiLG1heE51bWJlciwgIiDmnIDlsI/lgLzvvJogIixtaW5OdW1iZXIpIC0+IHJlc3VsdApyZXR1cm4ocmVzdWx0KX0KYGBgCgpgYGB7cn0KbGlicmFyeURhdGEk5a246ZmiID09ICLkurrmloflrbjpmaIiIC0+IGxvZ0luZGV4CmxpYnJhcnlEYXRhW2xvZ0luZGV4LCBdIC0+IHN1YnNhbXBsZQoKbGlicmFyeURhdGEk5a246ZmiID09ICLnpL7mnIPnp5HlrbjpmaIiIC0+IGxvZ0luZGV4CmxpYnJhcnlEYXRhW2xvZ0luZGV4LCBdIC0+IHN1YnNhbXBsZTIKYGBgCgoKCgoK</div>
 
 
 
