@@ -42,6 +42,23 @@ libraryData$學院 == "社會科學院" -> logIndex
 libraryData[logIndex, ] -> subsample2
 ```
 
+```{r}
+findMyCollege <- function(x){
+  (libraryData$學院==x) -> logIndex
+  libraryData[logIndex, ] -> subsample
+  return(subsample)
+}
+
+findMyCollege("社會科學院") ->s
+nrow(s)
+```
+
+```{r}
+
+```
+
+
+
 
 
 
