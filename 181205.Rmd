@@ -1,0 +1,20 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+```{r}
+library(readr); library(dplyr); library(stringr); library(lubridate)
+libraryData <- read_csv("https://raw.githubusercontent.com/tpemartin/github-data/master/library100_102.csv")
+```
+
+```{r}
+mutate(libraryData, 
+學院=as.factor(學院),
+書籍館藏地=as.factor(書籍館藏地),
+書籍類別=as.factor(書籍類別),
+借閱時間=ymd_hms(借閱時間,tz="Asia/Taipei")
+  ) -> libraryData
+```
+
+
