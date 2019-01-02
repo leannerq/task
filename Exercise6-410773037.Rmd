@@ -101,6 +101,16 @@ na2zero(hwGrades$hw2) -> hwGrades$hw2
 na2zero(hwGrades$Exercise3) -> hwGrades$Exercise3
 ```
 
+```{r}
+hwGrades %>%
+  mutate(
+    hw1=na2zero(hw1), 
+    hw2=na2zero(hw2), 
+    Exercise3=na2zero(Exercise3)
+  ) -> hwGrades
+```
+
+
 ## 1.5 資料整併
 classSurvey與hwGrades都存在對方所沒有的變數，共通點是他們都有**學號**。我們可透過**學號**將兩個資料併在一起，使用`dplyr::left_join()`。
 

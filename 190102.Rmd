@@ -1,0 +1,29 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+```{r}
+library(readr)
+library(tidyr)
+libraryData <- read_csv("https://raw.githubusercontent.com/tpemartin/github-data/master/libraryData2.csv")
+libraryData %>%
+  group_by(學院) %>%
+  nest(.key="各院借閱資料") ->
+  libraryDataNested
+```
+
+#8.6.2.1Practice
+#由libraryData，
+#（1）計算每位學生（即每個學號）「各學年」的學年總借閱冊數。
+#（2）計算每位學生（即每個學號）「各年級」的年級總借閱冊數。
+
+#（2）計算各學系的學年借閱中位數（使用median(學年總借閱冊數)），學年借閱人數（使用n()去計算group_by群內的人數）及年級借閱中位數（使用median(學年總借閱冊數)）。
+
+#（3）台北大學有6個學院，將資料透過適當的程序轉成「只有6筆」資料，每一筆是一個學院，而資料只有兩個變數：學院, 學院借閱狀況； 其中後者每一筆資料是「該院各系」的借閱將況data frame，裡頭有題（2）的兩個變數。
+
+```{r}
+#8.6.2.1(1)
+
+```
+
